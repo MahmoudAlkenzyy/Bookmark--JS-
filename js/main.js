@@ -4,7 +4,8 @@ var tableContent = document.getElementById('tableContent');
 var btnSubmit = document.getElementById('btnSubmit');
 var alert = document.getElementById('alert');
 
-if (localStorage.AllBooks !== null) {
+console.log(localStorage.AllBooks);
+if (localStorage.AllBooks !== null && undefined) {
     var books = JSON.parse(localStorage.AllBooks);
 } else {
     var books = [];
