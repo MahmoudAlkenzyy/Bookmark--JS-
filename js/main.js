@@ -45,6 +45,7 @@ function addBook() {
     localStorage.setItem('AllBooks', JSON.stringify(books));
 
     displayBookmarks();
+    console.log('casc');
 }
 // display bookmarks
 function displayBookmarks() {

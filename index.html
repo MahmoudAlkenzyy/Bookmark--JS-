@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./css/bootstrap.min.css" />
+        <link rel="stylesheet" href="./css/all.min.css" />
+        <link rel="stylesheet" href="./css/main.css" />
+        <title>Bookmark</title>
+    </head>
+    <body>
+        <header>
+            <div class="container text-center px-5">
+                <div class="py-5">
+                    <h1>Bookmarker</h1>
+                </div>
+            </div>
+        </header>
+        <section>
+            <div class="container px-5 py-2">
+                <div class="add-book">
+                    <h2 class="py-3 fs-4 text-center">
+                        <i class="fa fa-solid fa-bookmark"> </i>Bookmark your
+                        favorite sites<i class="fa-solid fa-bookmark"> </i>
+                    </h2>
+
+                    <label for="BookName" class="my">
+                        <i class="fa-solid fa-book-bookmark pe-2"></i> Site Name
+                    </label>
+                    <input
+                        id="BookName"
+                        type="text"
+                        class="form-control my-3"
+                        onkeydown="test(this.id)"
+                        placeholder="Bookmark Name"
+                    />
+
+                    <label for="BookUrl" class="my-2">
+                        <i class="fa-solid fa-link pe-2"></i> Site URL
+                    </label>
+                    <input
+                        id="BookUrl"
+                        type="text"
+                        class="form-control mb-2"
+                        onkeypress="test(this.id)"
+                        placeholder="Website URL"
+                    />
+                    <div id="alert" role="alert"></div>
+
+                    <div
+                        class="btn btn-submit fs-6 my-4 px-5 py-1 d-block m-auto"
+                        id="btnSubmit"
+                        onclick="addBook()"
+                    >
+                        Submit
+                    </div>
+                </div>
+                <table class="table text-center my-4">
+                    <thead>
+                        <th>Index</th>
+                        <th>Website Name</th>
+                        <th>Visit</th>
+                        <th>Delete</th>
+                    </thead>
+                    <tbody id="tableContent"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
