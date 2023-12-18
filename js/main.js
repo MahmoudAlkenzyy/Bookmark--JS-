@@ -12,29 +12,64 @@ if (localStorage.AllBooks !== null && undefined) {
 }
 
 // inputs validation
-function test(id) {
-    console.log(id);
 
-    var element = document.getElementById(id);
-    console.log(element.value.length, element.value.length > 2);
-    if (element.value.length > 2) {
+//REgex pattern
+var nameRegex = /^\w{3,}(\s+\w+)*$/;
+var urlRegex = /^(https?:\/\/)?(w{3}\.)?\w+\.\w{2,}\/?(:\d{2,5})?(\/\w+)*$/;
+
+bookName.addEventListener('input', function () {
+    validate(bookName, nameRegex);
+});
+
+bookUrl.addEventListener('input', function () {
+    validate(bookUrl, urlRegex);
+});
+
+function validate(element, regex) {
+    var testRegex = regex;
+    if (testRegex.test(element.value)) {
         element.classList.add('is-valid');
         element.classList.remove('is-invalid');
+        console.log('asc');
     } else {
         element.classList.add('is-invalid');
         element.classList.remove('is-valid');
+        console.log('asc');
     }
 }
+
+// function test(id) {
+//     console.log(id);
+
+//     var element = document.getElementById(id);
+//     console.log(element.value.length, element.value.length > 2);
+//     if (element.value.length > 2) {
+//         element.classList.add('is-valid');
+//         element.classList.remove('is-invalid');
+//     } else {
+//         element.classList.add('is-invalid');
+//         element.classList.remove('is-valid');
+//     }
+// }
+
 // Create the new bookmark
 function addBook() {
-    if (bookName.value.length >= 3 && bookUrl.value.length >= 3) {
+    if (
+        bookName.classList.contains('is-valid') &&
+        bookUrl.classList.contains('is-valid')
+    ) {
         var newBook = {
             siteName: bookName.value,
             siteUrl: bookUrl.value,
         };
         books.push(newBook);
+        bookName.classList.remove('is-valid');
+        bookUrl.classList.remove('is-valid');
+
         alert.classList.remove('alert', 'alert-danger');
         alert.innerHTML = '';
+
+        clearInput();
     } else {
         btnSubmit;
         alert.innerHTML = `invalid Site Name or Url
@@ -46,7 +81,13 @@ function addBook() {
     localStorage.setItem('AllBooks', JSON.stringify(books));
 
     displayBookmarks();
+
     console.log('casc');
+}
+// clear inputs
+function clearInput() {
+    bookName.value = '';
+    bookUrl.value = '';
 }
 // display bookmarks
 function displayBookmarks() {
